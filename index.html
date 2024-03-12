@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Retrieval and Pursuit!</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrieval and Pursuit!</title>
+    <style>
+        /* Add your CSS styling here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+        }
+
+        #game-board {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select, button {
+            font-size: 16px;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        #question-display, #answer-display {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .game-key {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .color-box {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border: 1px solid #333;
+            border-radius: 3px;
+        }
+
+        /* Trivial Pursuit-inspired colors */
+        .brown { background-color: #8b4513; }
+        .green { background-color: #008000; }
+        .yellow { background-color: #ffd700; }
+        .blue { background-color: #0000ff; }
+    </style>
+</head>
+<body>
+    <h1>Retrieval and Pursuit!</h1>
+    <div id="game-board">
+        <label for="category-select">Select a Category:</label>
+        <select id="category-select">
+            <option value="1">Perform a function with the AME</option>
+            <option value="2">CCAST SOP</option>
+            <option value="3">General Aeromed Knowledge</option>
+            <option value="4">AME knowledge</option>
+        </select>
+        <button onclick="getQuestion()">Get Question</button>
+        <button onclick="revealAnswer()">Reveal Answer</button>
+        <div id="question-display">
+            <!-- Question will be displayed here -->
+        </div>
+        <div id="answer-display">
+            <!-- Answer will be displayed here -->
+        </div>
+        <div class="game-key">
+            <p>Game Key:</p>
+            <div>
+                <span class="color-box brown"></span>
+                Brown - Perform a function with the AME
+            </div>
+            <div>
+                <span class="color-box green"></span>
+                Green - CCAST SOP
+            </div>
+            <div>
+                <span class="color-box yellow"></span>
+                Yellow - General Aeromed Knowledge
+            </div>
+            <div>
+                <span class="color-box blue"></span>
+                Blue - AME Knowledge
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var questions = {
+            "Perform a function with the AME": [
+                { 
+                    question: "Preform a leak test with the ventilator",
+                    answer: "2 minutes" 
+                },
+                { 
+                    question: "Question 2 for Perform a function with the AME?",
+                    answer: "Answer 2 for Question 2" 
+                }
+                // Add more questions and answers for this category as needed
+            ],
+            "CCAST SOP": [
+                { 
+                    question: "Question 1 for CCAST SOP?",
+                    answer: "Answer 1 for Question 1" 
+                },
+                { 
+                    question: "Question 2 for CCAST SOP?",
+                    answer: "Answer 2 for Question 2" 
+                }
+                // Add more questions and answers for this category as needed
+            ],
+            "General Aeromed Knowledge": [
+                { 
+                    question: "Question 1 for General Aeromed Knowledge?",
+                    answer: "Answer 1 for Question 1" 
+                },
+                { 
+                    question: "Question 2 for General Aeromed Knowledge?",
+                    answer: "Answer 2 for Question 2" 
+                }
+                // Add more questions and answers for this category as needed
+            ],
+            "AME knowledge": [
+                { 
+                    question: "Question 1 for AME knowledge?",
+                    answer: "Answer 1 for Question 1" 
+                },
+                { 
+                    question: "Question 2 for AME knowledge?",
+                    answer: "Answer 2 for Question 2" 
+                }
+                // Add more questions and answers for this category as needed
+            ]
+            // Add more categories with questions and answers as needed
+        };
+
+        function getQuestion() {
+            var categorySelect = document.getElementById("category-select");
+            var selectedCategory = categorySelect.options[categorySelect.selectedIndex].text;
+
+            var categoryQuestions = questions[selectedCategory];
+            var randomIndex = Math.floor(Math.random() * categoryQuestions.length);
+            var selectedQuestion = categoryQuestions[randomIndex];
+
+            var questionDisplay = document.getElementById("question-display");
+            questionDisplay.innerHTML = "<strong>Question:</strong> " + selectedQuestion.question;
+
+            // Reset answer display
+            document.getElementById("answer-display").innerText = "";
+        }
+
+        function revealAnswer() {
+            var categorySelect = document.getElementById("category-select");
+            var selectedCategory = categorySelect.options[categorySelect.selectedIndex].text;
+
+            var categoryQuestions = questions[selectedCategory];
+            var randomIndex = Math.floor(Math.random() * categoryQuestions.length);
+            var selectedQuestion = categoryQuestions[randomIndex];
+
+            var answerDisplay = document.getElementById("answer-display");
+            answerDisplay.innerHTML = "<strong>Answer:</strong> " + selectedQuestion.answer;
+        }
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
